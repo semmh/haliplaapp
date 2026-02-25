@@ -44,7 +44,7 @@ def _sayfa_ayarlari() -> None:
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
         layout="wide",
-        initial_sidebar_state="collapsed",   # mobilde başlangıçta kapalı
+        initial_sidebar_state="expanded",    # üretim parametreleri açık başlar
     )
     st.markdown(_MOBILE_CSS, unsafe_allow_html=True)
 
@@ -265,11 +265,12 @@ def _grafik_sure_pasta(s: HesaplamaSonuclari) -> go.Figure:
         textinfo="label+percent",
         hovertemplate="<b>%{label}</b><br>%{value:,.0f} dk<extra></extra>",
     ))
+    pasta_layout = {**PLOTLY_LAYOUT_BASE, "margin": dict(t=60, b=10, l=10, r=10)}
     fig.update_layout(
-        **PLOTLY_LAYOUT_BASE,
+        **pasta_layout,
         title=dict(text=f"⏱️ Süre Dağılımı ({s.sure.saat:,.1f} saat)",
                    x=0.5, font=dict(size=14, color=PALETTE["koyu_mavi"])),
-        height=340, margin=dict(t=60, b=10, l=10, r=10),
+        height=340,
     )
     return fig
 
@@ -285,11 +286,12 @@ def _grafik_maliyet_pasta(s: HesaplamaSonuclari, g: UretimGirdileri) -> go.Figur
         texttemplate="%{label}<br>%{percent}<br>₺%{value:,.0f}",
         hovertemplate="<b>%{label}</b><br>₺%{value:,.2f}<extra></extra>",
     ))
+    pasta_layout = {**PLOTLY_LAYOUT_BASE, "margin": dict(t=60, b=10, l=10, r=10)}
     fig.update_layout(
-        **PLOTLY_LAYOUT_BASE,
+        **pasta_layout,
         title=dict(text=f"💰 Maliyet Dağılımı — ₺{s.maliyet.toplam:,.0f}",
                    x=0.5, font=dict(size=14, color=PALETTE["koyu_mavi"])),
-        height=340, margin=dict(t=60, b=10, l=10, r=10),
+        height=340,
     )
     return fig
 
