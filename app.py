@@ -351,16 +351,7 @@ def _render_tab_hammadde(g: UretimGirdileri, s: HesaplamaSonuclari) -> None:
                      use_container_width=True, hide_index=True, height=530)
     with col_grafik:
         st.plotly_chart(_grafik_hammadde(s, g.toplam_metraj), use_container_width=True)
-        ilme_mm = 2 * g.hav_yuksekligi + g.baglanti_payi
-        st.markdown(
-            f'<div class="formula-box">'
-            f'<b>ℹ️ Formül:</b><br>'
-            f'<code>kg/m² = dtex × Reed × Pick × ilme[m] × fire × HB / 10⁷</code><br><br>'
-            f'<b>Bu hesap:</b><br>'
-            f'{s.dtex_degeri:.0f} × {g.tarak_no} × {g.atki_sikligi} × '
-            f'{ilme_mm:.1f}mm × {1+g.fire_orani:.2f} × {g.high_bulk_faktoru:.2f}'
-            f' = <b>{s.hav_tuketim_kg_m2:.4f} kg/m²</b>'
-            f'</div>', unsafe_allow_html=True)
+
 
 
 def _render_tab_cizelge(g: UretimGirdileri, s: HesaplamaSonuclari) -> None:
