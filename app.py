@@ -167,7 +167,8 @@ def _kpi(label: str, value: str, c1: str, c2: str) -> str:
 def _sidebar_girdileri() -> UretimGirdileri:
     """Sidebar widget'larından UretimGirdileri oluşturur."""
     sb = st.sidebar
-    sb.markdown("## 🧶 Üretim Parametreleri")
+    sb.button("Kapat <<", key="mobile_close")
+    sb.markdown("#### 🧶 Üretim Parametreleri")
 
     # ── Teknik ────────────────────────────────────────────────────────────
     sb.markdown("### 📐 Teknik Özellikler")
