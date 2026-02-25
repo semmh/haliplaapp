@@ -560,8 +560,8 @@ def _render_tab_maliyet(g: UretimGirdileri, s: HesaplamaSonuclari) -> None:
             text="%",
         )
         fig_oran.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
-        fig_oran.update_layout(**PLOTLY_LAYOUT_BASE, showlegend=False, height=260,
-                               margin=dict(t=30, b=40, l=40, r=10))
+        oran_layout = {**PLOTLY_LAYOUT_BASE, "margin": dict(t=30, b=40, l=40, r=10)}
+        fig_oran.update_layout(**oran_layout, showlegend=False, height=260)
         st.plotly_chart(fig_oran, use_container_width=True)
 
 
