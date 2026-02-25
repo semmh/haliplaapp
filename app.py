@@ -99,8 +99,22 @@ html, body, [class*="css"] { font-family: 'Segoe UI', sans-serif; }
     .block-container { padding: 1rem 0.75rem !important; }
 }
 
-/* ── Sidebar ──────────────────────────────────────────────────────── */
+/* ── Sidebar — mobil dahil her zaman görünür ─────────────────────── */
 [data-testid="stSidebar"] { min-width: 260px; }
+
+@media (max-width: 768px) {
+    [data-testid="stSidebar"] {
+        display: block !important;
+        visibility: visible !important;
+        transform: none !important;
+        position: relative !important;
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        z-index: 1 !important;
+    }
+
+}
 </style>
 """
 
