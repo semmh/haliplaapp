@@ -97,6 +97,33 @@ html, body, [class*="css"] { font-family: 'Segoe UI', sans-serif; }
     [data-testid="stDataFrame"] { overflow-x: auto !important; }
     [data-testid="metric-container"] { padding: 8px 4px; }
     .block-container { padding: 1rem 0.75rem !important; }
+
+    /* Kapatma butonunu her zaman görünür, sağ üstte sabit, dokunulabilir yap */
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="stSidebarCollapseButton"] > button {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    [data-testid="stSidebarCollapseButton"] > button {
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        left: auto !important;
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        background: #2d6a9f !important;
+        border-radius: 50% !important;
+        border: none !important;
+        z-index: 9999 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,.4) !important;
+    }
+    [data-testid="stSidebarCollapseButton"] > button svg {
+        fill: white !important;
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+    }
 }
 
 /* ── Sidebar — mobil dahil her zaman görünür ─────────────────────── */
