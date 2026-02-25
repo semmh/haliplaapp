@@ -167,8 +167,6 @@ def _kpi(label: str, value: str, c1: str, c2: str) -> str:
 def _sidebar_girdileri() -> UretimGirdileri:
     """Sidebar widget'larından UretimGirdileri oluşturur."""
     sb = st.sidebar
-    if sb.button("<<", key="mobile_close"):
-        pass  # görsel yer tutucu, CSS çözümü aktif
     sb.markdown("#### 🧶 Üretim Parametreleri")
 
     # ── Teknik ────────────────────────────────────────────────────────────
