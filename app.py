@@ -43,7 +43,7 @@ def _sayfa_ayarlari() -> None:
     st.set_page_config(
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
-        layout="wide",
+        layout="centered",
         initial_sidebar_state="expanded",
     )
     st.markdown(_MOBILE_CSS, unsafe_allow_html=True)
