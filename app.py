@@ -40,9 +40,6 @@ from engine import (
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _sayfa_ayarlari() -> None:
-    if "sidebar_open" not in st.session_state:
-        st.session_state["sidebar_open"] = True
-
     st.set_page_config(
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
@@ -171,7 +168,7 @@ def _sidebar_girdileri() -> UretimGirdileri:
     """Sidebar widget'larından UretimGirdileri oluşturur."""
     sb = st.sidebar
     if sb.button("<<", key="mobile_close"):
-        st.session_state["sidebar_open"] = False
+        pass  # görsel yer tutucu, CSS çözümü aktif
     sb.markdown("#### 🧶 Üretim Parametreleri")
 
     # ── Teknik ────────────────────────────────────────────────────────────
@@ -638,13 +635,6 @@ def main() -> None:
     _sayfa_ayarlari()
 
     # ── Sidebar CSS kontrolü ──────────────────────────────────────────────
-    if not st.session_state.get("sidebar_open", True):
-        st.markdown("""
-        <style>
-        [data-testid="stSidebar"] { display: none !important; }
-        [data-testid="collapsedControl"] { display: flex !important; }
-        </style>
-        """, unsafe_allow_html=True)
 
     # ── Başlık ────────────────────────────────────────────────────────────
     st.title("🧶 Akrilik Halı Üretim Planlama")
