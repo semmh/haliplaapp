@@ -43,13 +43,11 @@ def _sayfa_ayarlari() -> None:
     if "sidebar_open" not in st.session_state:
         st.session_state["sidebar_open"] = True
 
-    sidebar_state = "expanded" if st.session_state["sidebar_open"] else "collapsed"
-
     st.set_page_config(
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
         layout="wide",
-        initial_sidebar_state=sidebar_state,
+        initial_sidebar_state="expanded",
     )
     st.markdown(_MOBILE_CSS, unsafe_allow_html=True)
 
@@ -174,7 +172,6 @@ def _sidebar_girdileri() -> UretimGirdileri:
     sb = st.sidebar
     if sb.button("<<", key="mobile_close"):
         st.session_state["sidebar_open"] = False
-        st.rerun()
     sb.markdown("#### 🧶 Üretim Parametreleri")
 
     # ── Teknik ────────────────────────────────────────────────────────────
@@ -639,6 +636,15 @@ def _render_tab_optimizasyon(g: UretimGirdileri, s: HesaplamaSonuclari) -> None:
 
 def main() -> None:
     _sayfa_ayarlari()
+
+    # ── Sidebar CSS kontrolü ──────────────────────────────────────────────
+    if not st.session_state.get("sidebar_open", True):
+        st.markdown("""
+        <style>
+        [data-testid="stSidebar"] { display: none !important; }
+        [data-testid="collapsedControl"] { display: flex !important; }
+        </style>
+        """, unsafe_allow_html=True)
 
     # ── Başlık ────────────────────────────────────────────────────────────
     st.title("🧶 Akrilik Halı Üretim Planlama")
