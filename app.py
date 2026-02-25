@@ -40,11 +40,16 @@ from engine import (
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _sayfa_ayarlari() -> None:
+    if "sidebar_open" not in st.session_state:
+        st.session_state["sidebar_open"] = True
+
+    sidebar_state = "expanded" if st.session_state["sidebar_open"] else "collapsed"
+
     st.set_page_config(
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
         layout="wide",
-        initial_sidebar_state="expanded",    # üretim parametreleri açık başlar
+        initial_sidebar_state=sidebar_state,
     )
     st.markdown(_MOBILE_CSS, unsafe_allow_html=True)
 
@@ -167,7 +172,9 @@ def _kpi(label: str, value: str, c1: str, c2: str) -> str:
 def _sidebar_girdileri() -> UretimGirdileri:
     """Sidebar widget'larından UretimGirdileri oluşturur."""
     sb = st.sidebar
-    sb.button("Kapat <<", key="mobile_close")
+    if sb.button("<<", key="mobile_close"):
+        st.session_state["sidebar_open"] = False
+        st.rerun()
     sb.markdown("#### 🧶 Üretim Parametreleri")
 
     # ── Teknik ────────────────────────────────────────────────────────────
