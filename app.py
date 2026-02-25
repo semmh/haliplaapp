@@ -44,7 +44,7 @@ def _sayfa_ayarlari() -> None:
         page_title="Halı Üretim Planlama",
         page_icon="🧶",
         layout="centered",
-        initial_sidebar_state="auto",
+        initial_sidebar_state="collapsed",
     )
     st.markdown(_MOBILE_CSS, unsafe_allow_html=True)
 
