@@ -514,8 +514,7 @@ def _render_tab_optimizasyon(g: UretimGirdileri, s: HesaplamaSonuclari) -> None:
 def main() -> None:
     _sayfa_ayarlari()
 
-    st.title("🧶 Akrilik Halı Üretim Planlama")
-    st.caption("Face-to-Face Makine Halısı · Hammadde · Süre · Cağlık · Maliyet")
+    st.title("🧶 Üretim Planlama")
     st.divider()
 
     # ── Girdiler (expander) ───────────────────────────────────────────────
